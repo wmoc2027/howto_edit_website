@@ -8,13 +8,11 @@
 
 動的なCMS（コンテンツマネジメントシステム）として最も有名なものはPHPをベースとしたWordpressが有名です。これらのシステムは表示する内容の元がリレーショナルデータベース等に保存されており、要求されるページの内容によってデータベースからデータを抽出して **動的** にWEBページを生成します。ページの表示だけではなく、編集の際にも都度データベースのデータ検索（クエリ）や通信が発生しているため、ブラウザ上での動作は比較的低速に感じます。
 
-対して静的なWEBサイトではHTMLファイル群をあらかじめ用意しておきこれを表示する方式です。対話的な機能ページの提供はできませんがいちいちデータベースなどに問合せしませんので高速なページ表示ができ、情報の改ざんなどが起こりにくいセキュリティの高さを実現できます。
+対して静的なWEBサイトでは動的に情報を生成できるわけではありませんので、高機能なページの提供はできません。反面、いちいちデータベースに問合せしませんので高速なページ表示ができ、情報の改ざんなどが起こりにくいセキュリティの高さを実現できます。（[参考サイト](https://andaze.com/ja/services/hugo/)）
 
-しかし、素のHTMLファイルやCSSなどのページデザインを細かく設定するのはHTMLタグ等の専門知識が必要となりWEBサイト編集には極めて非効率的です。このため、レイアウトや文章構成を簡単な命令を使って定義し、文書記述に特化できる **マークアップ言語** を使って編集を行います。このマークアップ文書からWEBブラウザに表示可能なHTMLファイルを生成するシステムが静的サイトジェネレータの役割です。静的サイトジェネレータにはいくつか種類がありますが、Hugoについては[このサイトで説明](https://andaze.com/ja/services/hugo/)をご参照ください。
+しかし、素のHTMLファイルやCSSなどのページデザインを細かく設定するのはHTMLタグ等の専門知識が必要となりWEBサイト編集には極めて非効率的です。このため、レイアウトや文章構成を簡単な命令を使って定義し、文書記述に特化できる **マークアップ言語** を使って編集を行います。このマークアップ文書からWEBブラウザに表示可能なHTMLファイルを生成するシステムが静的サイトジェネレータの役割です。
 
-Hugoで用いられるマークアップ言語には、 [Markdown](https://github.github.com/gfm/) が使われています。
-
-Markdownは、見出し、表、箇条書き、という文書の構造表現に特化した命令と、その文章内容をシンプルなテキストで表現したものです。これはLLM（Large Language Model）が情報を検索して答えを返すために必要な情報拡張機能であるRAG（Retrieval-Argumented Generation）が解釈するのに最も適した形式です。
+Hugoで用いられるマークアップ言語には、 [Markdown](https://github.github.com/gfm/) が使われています。Markdownは、見出し、表、箇条書き、という文書の構造表現に特化した命令と、その文章内容をシンプルなテキストで表現したものです。これはLLM（Large Language Model）が情報を検索して答えを返すために必要な情報拡張機能であるRAG（Retrieval-Argumented Generation）が解釈するのに最も適した形式です。
 
 従って、Markdownを使ってWEBページを作成することが、将来に渡って情報を有効に活用するために非常に有用な手段と言えるでしょう。
 
@@ -32,11 +30,11 @@ Markdownは、見出し、表、箇条書き、という文書の構造表現に
 
 [https://github.com/wmoc2027/public_website](https://github.com/wmoc2027/public_website)
 
-リポジトリとは、Git上で扱われるファイル構成の管理単位です。Githubではアカウント毎に複数のリポジトリを保持することができ、上記リポジトリの場合、`wmoc2027` アカウントの `public_website` リポジトリが格納されていることがわかります。
+リポジトリとは、Git上で扱われるファイル構成の管理単位です。Githubではアカウント毎に[複数のリポジトリを保持することができます](https://github.com/orgs/wmoc2027/repositories)。公式WEBサイトのリポジトリは、`wmoc2027` アカウント内に、 `public_website` という名前のリポジトリとして管理されていることがわかります。
 
-このプロジェクトファイルがhugoのビルドシステムによってHTMLファイルを生成し、これを公式WEBサイトに自動的に配置します。これを行うのが、Github Actions です。Gihub上にデータが反映されると、このプロジェクトファイルに基づいてHugoのHTML変換が行われ、公式サイトへの公開が自動的に行われます。
+このリポジトリのファイル構成が元となり、hugoのビルドシステムによってHTML変換が行われ、公式WEBサイトとして公開されます。この一連の変換動作は、Github Actions という仕組みで自動実行されます。リポジトリ上のファイルの変更を検出すると、Github Actionsの定義ファイルに基づいて自動変換とWEBサイトへの反映が行われます。
 
-```{admonition} Gihub pagesを生成する手順
+```{admonition} Gihub pagesを生成する仕組み
 :class: tip
 
 Github Actionsは、プロジェクトファイル中の `.github` フォルダ以下に格納された[Github Actions定義yamlファイル](https://github.com/wmoc2027/public_website/blob/main/.github/workflows/hugo.yml) のとおり、次のセクションで定義したジョブが実行されます。ジョブの実行状態や実行結果は[こちら](https://github.com/wmoc2027/public_website/actions) で確認できます。
@@ -53,9 +51,9 @@ Github Actionsは、プロジェクトファイル中の `.github` フォルダ�
 
 ## GithubリポジトリのForkとプルリクエスト
 
-[https://github.com/wmoc2027/public_website](https://github.com/wmoc2027/public_website) に直接編集内容を反映すると、何らレビューすることなく編集内容が公開されてしまいます。
+前項のとおりリポジトリ [https://github.com/wmoc2027/public_website](https://github.com/wmoc2027/public_website) の内容を変更すると、自動的にhugoによるビルドが始まり、この内容がWEBサイトへ反映されます。このままでは何らレビューされることなく編集者の編集内容が直接公開されてしまいます。
 
-このため、編集者となる皆さんは、まず Gihub のアカウントを作成し、このアカウント上に[リポジトリをフォーク](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)します。
+これを防ぐため、編集者となる皆さんは、まず Gihub のアカウントを作成し、このアカウント上に[フォーク](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)した `public_website` を編集します。
 
 ![](assets/fork_pullreq.svg){align=center}
 
