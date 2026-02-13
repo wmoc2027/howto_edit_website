@@ -18,6 +18,8 @@ Gitのインストールが終わったら初期設定を行います。
 
 まず、あなたの著者としてユーザ名とメールアドレスを設定します。これは、gitの変更履歴に記録される変更を行った開発者の名前として使用されます。
 
+ターミナルを起動して以下のコマンドを順次入力してください。
+
 ```{code} powershell
 git config --global user.name "あなたの名前（ニックネームも可）"
 ```
@@ -30,19 +32,4 @@ git config --global user.email "あなたのメールアドレス"
 
 ```{code} powershell
 git config --global init.defaultBranch main
-```
-
-## SSHの秘密鍵と公開鍵の作成
-
-email　"email@example.com"　の部分はgithubに登録するメールアドレスとして次のコマンドを実行
-
-```{code-block} powershell
-ssh-keygen -t ed25519 -C "email@example.com"
-```
-
-```{code} powershell
-Generating public/private rsa key pair.
-Enter file in which to save the key (/c/Users/????/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
 ```
