@@ -2,7 +2,6 @@
 
 
 ```{toctree}
-:hidden:
 
 install_git
 setup_github
