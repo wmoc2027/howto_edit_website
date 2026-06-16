@@ -8,4 +8,17 @@ githubの [wmoc2027/public_website](https://github.com/wmoc2027/public_website) 
 
 これを防ぐため、ローカルPC上にもhugoをインストールし、変換されたhtmlをプレビューして確認・修正を行い、最終的に正しい変更のみを変更履歴としてgit上に変更を記録する必要があります。このため、各々の編集者のローカルPC上にもhugoをインストールし、都度変換されたwebサイトをブラウザで閲覧できるようにします。
 
-ここではhugoのインストールと、プレビューの閲覧方法について説明します。
+## hugoのサイトのWindowsへのインストール
+
+詳しくはHugoのサイトを確認してください。
+
+[Hugo のWindowsへのインストール方法](https://gohugo.io/installation/windows/)
+
+インストールツールとして、Chocolatey、Scoop、Wingetの3つのインストール方法が紹介されていますが、WingetはWindows11のネイティブパッケージマネージャです。これを使った方法を推奨します。
+
+```{code-block} powershell
+winget uninstall --name "Hugo (Extended)"
+```
+
+このコマンドを入力するだけでインストールは実施されます。インストールあとは一度コンピュータを再起動してください。
+

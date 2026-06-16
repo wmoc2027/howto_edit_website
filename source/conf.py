@@ -91,7 +91,7 @@ nwdiag_fontpath = './source/assets/ipaexg.ttf'
 html_theme = "sphinx_book_theme"
 
 html_theme_options = {
-    "repository_url": "https://github.com/Beckhoff-JP/TwinCATHowTo",
+    "repository_url": "https://github.com/wmoc2027/howto_edit_website",
     "use_repository_button": True,
     "use_issues_button": True,
     "use_edit_page_button": True,

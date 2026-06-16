@@ -3,8 +3,8 @@
 
 ```{toctree}
 
-install_git
-setup_github
 setup_vscode
 install_hugo
+install_git
+setup_github
 ```
