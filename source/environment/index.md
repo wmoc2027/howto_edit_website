@@ -2,6 +2,7 @@
 
 
 ```{toctree}
+:caption: 目次
 
 setup_vscode
 install_hugo
